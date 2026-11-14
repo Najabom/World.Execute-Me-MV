@@ -2,6 +2,8 @@
 
 把 Mili 的《world.execute(me);》做成**一个 standalone 单文件 HTML MV**：视觉全部由代码实时生成，配乐以 base64 内联，歌词逐字锁定。**成品视频就是作品本体**；另附从简的导演手记（解读的补充说明）与自检说明。
 
+> **最省事**：不想写任何说明？把 [`AI_ENTRY.md`](AI_ENTRY.md) 直接交给 AI，它会自己读文档、检查根目录的音频/歌词、完成生成与自检。
+
 ## 使用指引
 
 1. 克隆或下载本仓库到本地：
@@ -17,7 +19,7 @@
 
    仓库根目录自带两个占位说明文件 `audio.mp3.example`、`lyrics.txt.example`（只说明用途，不是输入）；放好真实文件后可以删掉它们。详细协议见 [input/README.md](input/README.md)。这两份输入只供本地生成使用，已在 `.gitignore` 中排除，不会被提交。
 
-3. 把本目录交给生成模型，让它按下面的"强制阅读顺序"读完文档，在根目录生成 `world-execute-me.html`。
+3. 把 [`AI_ENTRY.md`](AI_ENTRY.md) 交给生成模型（或把整个目录交给它，让它按 AI_ENTRY.md 执行）；它会按下面的文档顺序完成生成与自检，在根目录产出 `world-execute-me.html`。
 
 4. 用 Chrome / Edge 双击打开 `world-execute-me.html`，点"开始 / 播放"即可离线观看（音频已内联）。
 
@@ -37,6 +39,7 @@
 ```
 World.Execute-Me-MV-PROMPT-Arebia/
 ├── README.md
+├── AI_ENTRY.md        ← 交给 AI 的入口文件
 ├── TASK.md
 ├── CONTRACT.md
 ├── CREATIVE.md
