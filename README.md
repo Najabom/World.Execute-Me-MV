@@ -15,7 +15,7 @@
    - **音频**：命名为 `audio.mp3`；如果是其他格式，用 `audio.m4a` / `audio.wav` / `audio.flac`，前缀保持 `audio`。
    - **歌词**：命名为 `lyrics.txt`。UTF-8 纯文本，**恰好 129 行**，每行对应 `data/lyrics_timing.json` 的 i=0–128；不要时间戳、编号、标题或空行。
 
-   详细协议见 [input/README.md](input/README.md)。这两份文件只供本地生成使用，已在 `.gitignore` 中排除，不会被提交。
+   仓库根目录自带两个占位说明文件 `audio.mp3.example`、`lyrics.txt.example`（只说明用途，不是输入）；放好真实文件后可以删掉它们。详细协议见 [input/README.md](input/README.md)。这两份输入只供本地生成使用，已在 `.gitignore` 中排除，不会被提交。
 
 3. 把本目录交给生成模型，让它按下面的"强制阅读顺序"读完文档，在根目录生成 `world-execute-me.html`。
 
@@ -40,8 +40,8 @@ World.Execute-Me-MV-PROMPT-Arebia/
 ├── TASK.md
 ├── CONTRACT.md
 ├── CREATIVE.md
-├── audio.mp3          ← 使用者放入（.gitignore 排除）
-├── lyrics.txt         ← 使用者放入（.gitignore 排除）
+├── audio.mp3.example  ← 占位说明（真实音频 audio.* 不入库）
+├── lyrics.txt.example ← 占位说明（真实歌词 lyrics.txt 不入库）
 ├── data/
 │   ├── lyrics_timing.json
 │   ├── audio_features.json

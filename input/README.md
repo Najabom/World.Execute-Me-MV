@@ -9,6 +9,8 @@
 | 音频 | `./audio.*`（如 `audio.mp3`、`audio.m4a`、`audio.wav`、`audio.flac`） | 原始音频文件，不转码 |
 | 歌词 | `./lyrics.txt` | UTF-8 纯文本，恰好 129 行，每行对应 i=0–128 |
 
+仓库根目录自带 `audio.mp3.example`、`lyrics.txt.example` 两个占位说明文件（仅说明用途，不是输入）；放好真实文件后可删除。
+
 ## 音频
 
 - **读取**：从仓库根目录读 `audio.*`。最终必须**原样**内联进 HTML（契约见 [CONTRACT.md](../CONTRACT.md) §5）：`data:audio/...;base64,...`。

@@ -1,5 +1,6 @@
 # 本地输入（版权原因不提交）
 /audio.*
+!/audio.mp3.example
 /lyrics.txt
 
 # 生成的成品与中间产物
