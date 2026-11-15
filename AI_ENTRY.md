@@ -9,7 +9,7 @@
 `git clone https://github.com/Najabom/World.Execute-Me-MV-PROMPT-Arebia.git`
 并进入该目录，然后继续。
 
-按下面顺序执行，不要跳步；除"缺少输入"外，不要向用户提问、不要等确认、不要联网查资料。
+按下面顺序执行，不要跳步；除"识别/放置输入"需要一次沟通外，不要向用户提问、不要等确认、不要联网查资料。
 
 ### 第 1 步：按序完整阅读核心文档
 
@@ -21,14 +21,30 @@
 然后按需读取 `input/README.md`、`delivery/FORMAT.md`、`delivery/CHECKLIST.md`，以及
 `data/lyrics_timing.json`、`data/audio_features.json`。
 
-### 第 2 步：检查仓库根目录的输入
+### 第 2 步：自动识别音频与歌词（任意文件名、任意常见格式）
 
-- 音频：`audio.mp3` / `audio.m4a` / `audio.wav` / `audio.flac`（文件名前缀必须是 `audio`）
-- 歌词：`lyrics.txt`（UTF-8 纯文本，恰好 129 行，对应 `data/lyrics_timing.json` 的 i=0–128）
+**不要**因为文件名不是 `audio.*` / `lyrics.txt`、或不是 mp3/txt 就判定"缺失"——使用者可能用任意名字和格式。
 
-**缺任意一项时**：只发一条简短消息，告诉用户缺哪个文件、应放到哪个路径（给出完整路径），然后停下等待。
-用户放好后继续，不要重复询问。
-**歌词行数/顺序不符时**：按 `input/README.md` 的降级路径处理，并在最终交付说明中标注；不得擅自删行、补行、调序或拼接。
+**扫描范围**
+- 先看仓库根目录（与 README.md 同级）；根目录没有，再看一层子目录（跳过 `.git/`、`data/`、`delivery/`、`input/`、`node_modules/`）。
+- 使用者在对话里给出的路径、链接或附件，也纳入候选。
+
+**音频候选**
+- 常见扩展名：mp3 / m4a / aac / wav / flac / ogg / opus / webm / aiff / aif / wma / alac / m4b / mka / mp4 等。
+- 扩展名不常见时看文件头（RIFF、ID3 或 0xFFFx、fLaC、OggS、ftyp、EBML 等音频魔数）。
+- 文件名、大小写随意；不需要改名。
+
+**歌词候选**
+- 文本类文件：txt / text / lrc / srt / ass / vtt / md / json 等；优先文件名含 lyric、歌词、song、world.execute 的，必要时读开头判断是否像歌词。
+- `.lrc` / `.srt` / `.vtt` / `.ass` 等带时间码的格式：去掉时间码、元数据、注释与空行，得到纯歌词行。
+- 多个同样合理的候选时：只问一次（列出候选让用户选），不要反复问。
+
+**判定**
+- 清洗后歌词应为 129 行，对应 `data/lyrics_timing.json` 的 i=0–128。
+- 只有候选确实为空时，才发一条消息告诉用户缺哪类输入、放在仓库根目录即可（任意名字/格式），然后等待；用户放好后自动继续。
+- 行数不符：按 `input/README.md` 的降级路径处理，并在交付说明中标注；不得擅自删行、补行、调序或拼接。
+
+**防误提交**：把识别到的音频/歌词文件相对路径追加到 `.git/info/exclude`（本机忽略，不会提交），避免真实素材被误提交。
 
 ### 第 3 步：完整创作并落盘
 
@@ -51,7 +67,7 @@
    ```
    git clone https://github.com/Najabom/World.Execute-Me-MV-PROMPT-Arebia.git
    ```
-2. 把音频和歌词放入仓库根目录：音频命名 `audio.mp3`（或 `audio.m4a`/`audio.wav`/`audio.flac`），歌词命名 `lyrics.txt`（129 行）。详见 `input/README.md`。
+2. 把音频和歌词放进**仓库根目录**——**文件名、格式随你**（mp3/m4a/wav/flac/ogg…；歌词 txt/lrc/srt… 均可），不用改名。详见 `input/README.md`。
 3. 把 `AI_ENTRY.md` 交给 AI（或把整个仓库目录交给它），其余自动完成。
 
-> 音频与歌词只留本地，已被 `.gitignore` 排除，不会被提交。
+> 音频与歌词只留本地，不会被提交。

@@ -1,7 +1,23 @@
-# 本地输入（版权原因不提交）
-/audio.*
-!/audio.mp3.example
-/lyrics.txt
+# 本地输入（版权原因不提交；任意文件名/常见格式）
+*.mp3
+*.m4a
+*.aac
+*.wav
+*.flac
+*.ogg
+*.opus
+*.webm
+*.aiff
+*.aif
+*.wma
+*.alac
+*.m4b
+*.mka
+*.lrc
+*.srt
+*.ass
+*.vtt
+*.txt
 
 # 生成的成品与中间产物
 /world-execute-me.html

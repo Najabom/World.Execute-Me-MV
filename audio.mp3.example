@@ -1,6 +1,6 @@
 这是音频占位示例，不是真实音频。
 
-请把真实音频放到本目录（仓库根目录），并命名为：
-  audio.mp3   （或 audio.m4a / audio.wav / audio.flac，前缀保持 audio）
+把真实音频放到本目录（仓库根目录）即可——文件名和格式随你
+（mp3 / m4a / aac / wav / flac / ogg / opus / webm / aiff / wma 等均可），不需要改名。
 
-放好后可以删除本示例文件。真实音频已被 .gitignore 忽略，不会被提交。
+放好后可以删除本示例文件。真实音频不会被提交。

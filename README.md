@@ -12,12 +12,12 @@
    git clone https://github.com/Najabom/World.Execute-Me-MV-PROMPT-Arebia.git
    ```
 
-2. 把两份输入文件放到**仓库根目录**（与 `README.md` 同级）：
+2. 把音频和歌词放进**仓库根目录**（与 `README.md` 同级）——**文件名、格式不限**，不用改名：
 
-   - **音频**：命名为 `audio.mp3`；如果是其他格式，用 `audio.m4a` / `audio.wav` / `audio.flac`，前缀保持 `audio`。
-   - **歌词**：命名为 `lyrics.txt`。UTF-8 纯文本，**恰好 129 行**，每行对应 `data/lyrics_timing.json` 的 i=0–128；不要时间戳、编号、标题或空行。
+   - **音频**：mp3 / m4a / aac / wav / flac / ogg / opus / webm / aiff / wma 等均可；
+   - **歌词**：txt / lrc / srt / vtt 等文本均可（LRC 等会先去掉时间码）。
 
-   仓库根目录自带两个占位说明文件 `audio.mp3.example`、`lyrics.txt.example`（只说明用途，不是输入）；放好真实文件后可以删掉它们。详细协议见 [input/README.md](input/README.md)。这两份输入只供本地生成使用，已在 `.gitignore` 中排除，不会被提交。
+   仓库根目录自带两个占位说明 `audio.mp3.example`、`lyrics.txt.example`（只说明用途，不是输入），放好真实文件后可以删掉。AI 会自动识别任意名字/格式的输入；根目录没有也会就近再找。详细协议见 [input/README.md](input/README.md)。真实输入只供本地生成，不会提交。
 
 3. 把 [`AI_ENTRY.md`](AI_ENTRY.md) 交给生成模型（或把整个目录交给它，让它按 AI_ENTRY.md 执行）；它会按下面的文档顺序完成生成与自检，在根目录产出 `world-execute-me.html`。
 
@@ -43,8 +43,8 @@ World.Execute-Me-MV-PROMPT-Arebia/
 ├── TASK.md
 ├── CONTRACT.md
 ├── CREATIVE.md
-├── audio.mp3.example  ← 占位说明（真实音频 audio.* 不入库）
-├── lyrics.txt.example ← 占位说明（真实歌词 lyrics.txt 不入库）
+├── audio.mp3.example  ← 占位说明（真实音频任意名字/格式，不入库）
+├── lyrics.txt.example ← 占位说明（真实歌词任意名字/格式，不入库）
 ├── data/
 │   ├── lyrics_timing.json
 │   ├── audio_features.json
@@ -60,4 +60,4 @@ World.Execute-Me-MV-PROMPT-Arebia/
 
 - **契约只写一次**：任何规则细节以对应文件为准，其他文件只写"见 xxx §n"，不复制措辞。
 - **数据只读**：`data/*.json` 不得编辑、重排、取整或格式化后回写（见 CONTRACT.md §6、data/DATA_NOTES.md）。
-- **输入不入库**：`audio.*`、`lyrics.txt` 与生成的 `world-execute-me.html` 只留本地，不提交。
+- **输入不入库**：任何音频与歌词文件、以及生成的 `world-execute-me.html` 只留本地，不提交（AI 会把识别到的输入加入本机忽略规则）。

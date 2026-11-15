@@ -6,8 +6,8 @@
 
 | 输入 | 要求 | 提供与校验 |
 |---|---|---|
-| 音频 | **必需**。放仓库根目录 `audio.*`，最终必须内联进 HTML | [input/README.md](input/README.md) |
-| 歌词原文 | **必需**。放仓库根目录 `lyrics.txt`；129 行，与 `data/lyrics_timing.json` 的 i=0–128 一一对应 | [input/README.md](input/README.md) |
+| 音频 | **必需**。放仓库根目录（任意文件名、常见格式均可，自动识别），最终必须内联进 HTML | [input/README.md](input/README.md) |
+| 歌词原文 | **必需**。放仓库根目录（任意文件名/文本格式；清洗后 129 行，对应 `data/lyrics_timing.json` 的 i=0–128） | [input/README.md](input/README.md) |
 | 数据 | `data/*.json` 随仓库提供，**只读**，用于对齐与校验 | 字段与怪点见 [data/DATA_NOTES.md](data/DATA_NOTES.md) |
 
 歌词行数/顺序不符时按 [input/README.md](input/README.md) 的降级路径交付；降级不是默认形态。
